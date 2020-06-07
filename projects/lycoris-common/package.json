@@ -1,0 +1,17 @@
+{
+  "name": "@lycoris-nubila/ngx-lycoris",
+  "version": "1.0.11",
+  "peerDependencies": {
+    "@datorama/akita-ng-forms-manager": "^3.3.0",
+    "@datorama/akita": "^4.23.2",
+    "@angular/common": "^9.1.9",
+    "@angular/core": "^9.1.9",
+    "lodash-es": "^4.17.15"
+  },
+  "dependencies": {
+    "tslib": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/lodash-es": "^4.17.3"
+  }
+}
