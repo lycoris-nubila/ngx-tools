@@ -1,7 +1,9 @@
-export interface LycorisPageableDto<T> {
+export interface RemoteDataPage<T> {
     totalElements?: number;
     nextPageToken?: string;
     fresh: boolean;
     error?: Error;
     data?: T[];
 }
+
+export type LycorisPageableDto<T> = RemoteDataPage<T>;

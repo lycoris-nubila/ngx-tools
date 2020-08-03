@@ -1,10 +1,10 @@
-export interface ILycorisEntity {
+export interface IEntity {
     readonly id: string;
     readonly updateTimestamp: number;
     readonly creationTimestamp: number;
 }
 
-export class LycorisEntity implements ILycorisEntity {
+export class Entity implements IEntity {
 
     private _id: string;
     private _updateTimestamp: number;
@@ -32,3 +32,6 @@ export class LycorisEntity implements ILycorisEntity {
         this._updateTimestamp = Date.now();
     }
 }
+
+export type ILycorisEntity = IEntity;
+export type LycorisEntity = Entity;

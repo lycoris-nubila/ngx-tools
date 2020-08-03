@@ -1,6 +1,8 @@
-export interface LycorisMessageDto {
+export interface Message {
     severity: 'success' | 'error' | 'info';
     params?: { [key: string]: any };
     summaryKey: string;
     detailKey: string;
 }
+
+export type LycorisMessageDto = Message;
