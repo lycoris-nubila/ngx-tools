@@ -1,4 +1,4 @@
-import type {OnInit} from '@angular/core';
+import {OnInit} from '@angular/core';
 import {Directive, Input, TemplateRef, ViewContainerRef} from '@angular/core';
 
 export class NgLetContext {

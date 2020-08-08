@@ -3,5 +3,3 @@ export interface RemoteData<T> {
     error?: Error;
     data?: T;
 }
-
-export type LycorisDataDto<T> = RemoteData<T>;

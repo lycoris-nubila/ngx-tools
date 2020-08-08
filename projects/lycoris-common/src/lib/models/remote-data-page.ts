@@ -5,5 +5,3 @@ export interface RemoteDataPage<T> {
     error?: Error;
     data?: T[];
 }
-
-export type LycorisPageableDto<T> = RemoteDataPage<T>;

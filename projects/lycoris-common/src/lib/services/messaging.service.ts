@@ -15,5 +15,3 @@ export class MessagingService {
         return this._message$;
     }
 }
-
-export type LycorisMessagingService = MessagingService;

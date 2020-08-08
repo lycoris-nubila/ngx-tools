@@ -6,5 +6,3 @@ export interface Notification {
     readonly domain: NotificationDomain;
     readonly action: NotificationAction;
 }
-
-export type LycorisPushMessageDto = Notification;

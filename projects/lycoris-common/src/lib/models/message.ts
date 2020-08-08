@@ -4,5 +4,3 @@ export interface Message {
     summaryKey: string;
     detailKey: string;
 }
-
-export type LycorisMessageDto = Message;

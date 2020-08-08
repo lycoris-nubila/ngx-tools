@@ -32,6 +32,3 @@ export class Entity implements IEntity {
         this._updateTimestamp = Date.now();
     }
 }
-
-export type ILycorisEntity = IEntity;
-export type LycorisEntity = Entity;
