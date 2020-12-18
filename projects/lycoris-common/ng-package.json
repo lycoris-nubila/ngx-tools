@@ -12,10 +12,13 @@
       "@datorama/akita-ng-forms-manager": "akita-ng-forms-manager",
       "lodash-es/isUndefined": "isUndefined",
       "lodash-es/isEqualWith": "isEqualWith",
+      "moment-timezone": "moment-timezone",
       "lodash-es/isEmpty": "isEmpty",
+      "lodash-es/isDate": "isDate",
       "lodash-es/omitBy": "omitBy",
       "lodash-es/isNull": "isNull",
-      "@datorama/akita": "akita"
+      "@datorama/akita": "akita",
+      "luxon": "luxon"
     }
   }
 }

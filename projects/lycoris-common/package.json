@@ -1,19 +1,23 @@
 {
   "name": "@lycoris-nubila/ngx-lycoris",
-  "version": "1.0.34",
+  "version": "1.0.38",
   "peerDependencies": {
     "@datorama/akita-ng-forms-manager": "^5.0.2",
+    "moment-timezone": "^0.5.31",
     "@datorama/akita": "^5.2.1",
     "@angular/common": "^9.1.9",
     "@angular/core": "^9.1.9",
     "lodash-es": "^4.17.15",
-    "moment": "^2.27.0"
+    "moment": "^2.27.0",
+    "luxon": "^1.25.0"
   },
   "dependencies": {
     "tslib": "^1.10.0"
   },
   "devDependencies": {
+    "@types/moment-timezone": "^0.5.30",
     "@types/lodash-es": "^4.17.3",
-    "@types/moment": "^2.13.0"
+    "@types/moment": "^2.13.0",
+    "@types/luxon": "^1.24.3"
   }
 }
