@@ -6,7 +6,6 @@ export * from './lib/models/message';
 export * from './lib/models/remote-data-page';
 export * from './lib/services/messaging.service';
 export * from './lib/models/notification-action';
-export * from './lib/models/notification-domain';
 export * from './lib/models/notification';
 export * from './lib/operators/filter-empty';
 export * from './lib/operators/filter-null';

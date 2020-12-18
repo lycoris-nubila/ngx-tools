@@ -1,8 +1,7 @@
 import {NotificationAction} from './notification-action';
-import {NotificationDomain} from './notification-domain';
 
-export interface Notification {
-    readonly entityId: string;
-    readonly domain: NotificationDomain;
-    readonly action: NotificationAction;
+export interface Notification<T> {
+  readonly domain: T;
+  readonly entityId: string;
+  readonly action: NotificationAction;
 }

@@ -1,6 +1,6 @@
 {
   "name": "@lycoris-nubila/ngx-lycoris",
-  "version": "1.0.38",
+  "version": "1.0.39",
   "peerDependencies": {
     "@datorama/akita-ng-forms-manager": "^5.0.2",
     "moment-timezone": "^0.5.31",
