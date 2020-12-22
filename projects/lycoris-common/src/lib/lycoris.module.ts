@@ -6,12 +6,14 @@ import {UrlPipe} from './pipes/url.pipe';
 import {ResourceUrlPipe} from './pipes/resource-url.pipe';
 import {ToFormatPipe} from './pipes/to-format.pipe';
 import {ToLocaleStringPipe} from './pipes/to-locale-string.pipe';
+import {NullIfEmpty} from './pipes/null-if-empty';
 
 const elements = [
   NgLetDirective,
   HtmlPipe,
   MomentPipe,
   UrlPipe,
+  NullIfEmpty,
   ResourceUrlPipe,
   ToFormatPipe,
   ToLocaleStringPipe];
