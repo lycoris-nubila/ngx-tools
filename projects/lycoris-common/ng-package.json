@@ -13,6 +13,7 @@
       "lodash-es/isUndefined": "isUndefined",
       "lodash-es/isEqualWith": "isEqualWith",
       "moment-timezone": "moment-timezone",
+      "lodash-es/isEqual": "isEqual",
       "lodash-es/isEmpty": "isEmpty",
       "lodash-es/isDate": "isDate",
       "lodash-es/omitBy": "omitBy",
