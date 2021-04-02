@@ -1,4 +1,3 @@
-import isEqualWith from 'lodash-es/isEqualWith';
 import omitBy from 'lodash-es/omitBy';
 import {Data$, DataPage$} from './lycoris-types';
 import {asyncScheduler, combineLatest, Observable} from 'rxjs';
@@ -9,6 +8,7 @@ import {RemoteDataPage} from './models/remote-data-page';
 import isDate from 'lodash-es/isDate';
 import isEqual from 'lodash-es/isEqual';
 import {DateTime} from 'luxon';
+import isObject from 'lodash-es/isObject';
 
 export function isEquals(a: any, b: any) {
   return isEqual((a ?? null), (b ?? null));
@@ -39,16 +39,16 @@ export function dateTimeToLocaleDate(dateTime: DateTime): Date {
     new Date();
 }
 
-export function compareEntity<T extends IEntity>(document1: T, document2: T) {
-  if (!Array.isArray(document1) && !Array.isArray(document2)) {
-    return JSON.stringify(omitBy(document1, (v, k) => k.endsWith('$'))) ===
-      JSON.stringify(omitBy(document2, (v, k) => k.endsWith('$')));
-  }
+export function compareEntity<T extends IEntity>(
+  document1: T, document2: T): boolean {
+  return JSON.stringify(omitBy(document1, (v) => isObject(v))) ===
+    JSON.stringify(omitBy(document2, (v) => isObject(v)));
 }
 
 export function compareEntities<T extends IEntity>(
   array1: T[], array2: T[]): boolean {
-  return isEqualWith(array1, array2, (d1, d2) => compareEntity(d1, d2));
+  return (array1 || []).length === (array2 || []).length &&
+    array1.every((item1, i) => compareEntity(item1, array2[i]));
 }
 
 export function appData<T1, T2>(

@@ -1,31 +1,39 @@
 import {Observable} from 'rxjs';
+import get from 'lodash-es/get';
+import isEmpty from 'lodash-es/isEmpty';
 
 type ObservableMethod = (...args: any[]) => Observable<any>;
 
 const cache = new Map<string, Map<string, Observable<any>>>();
 
-const buildKey = (parameters: Array<any>) => JSON.stringify(
-    parameters.map(param => param !== undefined ? JSON.parse(JSON.stringify(param)) : param));
+const buildKey = (parameters: Array<any>, keyPaths?: string[]) =>
+  JSON.stringify(isEmpty(keyPaths) ?
+    parameters.map(param => param !== undefined ?
+      JSON.parse(JSON.stringify(param)) : param) :
+    keyPaths.map(keyPath => get(parameters, keyPath)).join(','));
 
-export function CacheObservable() {
-    return function(target: any, propertyKey: string, descriptor: TypedPropertyDescriptor<ObservableMethod>) {
-        const method   = descriptor.value;
-        const cacheKey = target.constructor.name + '#' + propertyKey;
+export function CacheObservable(keyPaths?: string[]) {
+  return function(
+    target: any, propertyKey: string,
+    descriptor: TypedPropertyDescriptor<ObservableMethod>) {
+    const method = descriptor.value;
 
-        cache.set(cacheKey, new Map<string, Observable<any>>());
+    const cacheKey = target.constructor.name + '#' + propertyKey;
 
-        const targetCache = cache.get(cacheKey);
+    cache.set(cacheKey, new Map<string, Observable<any>>());
 
-        descriptor.value = function(...args: any[]) {
-            const key = buildKey(args);
+    const targetCache = cache.get(cacheKey);
 
-            if (!targetCache.has(key)) {
-                targetCache.set(key, method.apply(this, args));
-            }
+    descriptor.value = function(...args: any[]) {
+      const key = buildKey(args, keyPaths);
 
-            return targetCache.get(key);
-        };
+      if (!targetCache.has(key)) {
+        targetCache.set(key, method.apply(this, args));
+      }
 
-        return descriptor;
+      return targetCache.get(key);
     };
+
+    return descriptor;
+  };
 }
