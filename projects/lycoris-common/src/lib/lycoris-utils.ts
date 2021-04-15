@@ -1,4 +1,3 @@
-import omitBy from 'lodash-es/omitBy';
 import {Data$, DataPage$} from './lycoris-types';
 import {asyncScheduler, combineLatest, Observable} from 'rxjs';
 import {defaultIfEmpty, map, observeOn, throttleTime} from 'rxjs/operators';
@@ -8,7 +7,6 @@ import {RemoteDataPage} from './models/remote-data-page';
 import isDate from 'lodash-es/isDate';
 import isEqual from 'lodash-es/isEqual';
 import {DateTime} from 'luxon';
-import isObject from 'lodash-es/isObject';
 
 export function isEquals(a: any, b: any) {
   return isEqual((a ?? null), (b ?? null));
@@ -41,8 +39,8 @@ export function dateTimeToLocaleDate(dateTime: DateTime): Date {
 
 export function compareEntity<T extends IEntity>(
   document1: T, document2: T): boolean {
-  return JSON.stringify(omitBy(document1, (v) => isObject(v))) ===
-    JSON.stringify(omitBy(document2, (v) => isObject(v)));
+  return JSON.stringify(document1, (k, v) => (k.includes('$') ? null : v)) ===
+    JSON.stringify(document2, (k, v) => (k.includes('$') ? null : v));
 }
 
 export function compareEntities<T extends IEntity>(

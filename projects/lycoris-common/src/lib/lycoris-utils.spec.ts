@@ -48,16 +48,16 @@ describe('compareEntities', () => {
     expect(compareEntities([a], [b])).toBeTrue();
   });
 
-  it('should have same objects with different deep object equals', async () => {
+  it('should have different objects with different deep object equals', async () => {
     const a = new TestEntity('12', 1, TestEnum.VALUE1, {deep: 1});
     const b = new TestEntity('12', 1, TestEnum.VALUE1, {deep: 2});
 
-    expect(compareEntities([a], [b])).toBeTrue();
+    expect(compareEntities([a], [b])).toBeFalse();
   });
 
   it('should have same objects with different observables equals', async () => {
     const a = new TestEntity('12', 1, TestEnum.VALUE1, {deep: 1}, of(null));
-    const b = new TestEntity('12', 1, TestEnum.VALUE1, {deep: 2}, of(1));
+    const b = new TestEntity('12', 1, TestEnum.VALUE1, {deep: 1}, of(1));
 
     expect(compareEntities([a], [b])).toBeTrue();
   });
@@ -88,16 +88,16 @@ describe('compareEntity', () => {
     expect(compareEntity(a, b)).toBeTrue();
   });
 
-  it('should have same objects with different deep object equals', async () => {
+  it('should have different objects with different deep object equals', async () => {
     const a = new TestEntity('12', 1, TestEnum.VALUE1, {deep: 1});
     const b = new TestEntity('12', 1, TestEnum.VALUE1, {deep: 2});
 
-    expect(compareEntity(a, b)).toBeTrue();
+    expect(compareEntity(a, b)).toBeFalse();
   });
 
   it('should have same objects with different observables equals', async () => {
     const a = new TestEntity('12', 1, TestEnum.VALUE1, {deep: 1}, of(null));
-    const b = new TestEntity('12', 1, TestEnum.VALUE1, {deep: 2}, of(1));
+    const b = new TestEntity('12', 1, TestEnum.VALUE1, {deep: 1}, of(1));
 
     expect(compareEntity(a, b)).toBeTrue();
   });
