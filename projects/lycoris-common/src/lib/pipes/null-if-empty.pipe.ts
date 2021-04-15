@@ -3,7 +3,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 @Pipe({
   name: 'nullIfEmpty',
 })
-export class NullIfEmpty implements PipeTransform {
+export class NullIfEmptyPipe implements PipeTransform {
 
   constructor() {
   }
